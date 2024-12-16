@@ -1,0 +1,38 @@
+import cv2
+import subprocess
+
+camera_index = 0  # Change this for the specific USB camera
+stream_url = "rtsp://localhost:8554/camera1"
+
+cap = cv2.VideoCapture(camera_index)
+if not cap.isOpened():
+    print("Error: Cannot access the camera")
+    exit()
+
+# Command to pipe frames to ffmpeg for RTSP publishing
+ffmpeg_command = [
+    'ffmpeg',
+    '-y',
+    '-f', 'rawvideo',
+    '-pix_fmt', 'bgr24',
+    '-s', f"{int(cap.get(3))}x{int(cap.get(4))}",
+    '-i', '-',
+    '-c:v', 'libx264',
+    '-preset', 'ultrafast',
+    '-tune', 'zerolatency',
+    '-f', 'rtsp',
+    stream_url
+]
+
+# Open subprocess for ffmpeg
+process = subprocess.Popen(ffmpeg_command, stdin=subprocess.PIPE)
+
+while cap.isOpened():
+    ret, frame = cap.read()
+    if not ret:
+        break
+    process.stdin.write(frame.tobytes())
+
+cap.release()
+process.stdin.close()
+process.wait()

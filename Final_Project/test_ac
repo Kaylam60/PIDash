@@ -1,0 +1,8 @@
+CTRL_REG1 = 0x20
+CTRL_REG4 = 0x23
+
+# Read register values
+ctrl_reg1_val = bus.read_byte_data(LIS3DH_ADDRESS, CTRL_REG1)
+ctrl_reg4_val = bus.read_byte_data(LIS3DH_ADDRESS, CTRL_REG4)
+print(f"CTRL_REG1: 0x{ctrl_reg1_val:02X}")
+print(f"CTRL_REG4: 0x{ctrl_reg4_val:02X}")
