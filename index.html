@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="A Raspberry Pi-based dashcam project with real-time crash detection and video streaming capabilities.">
+    <meta name="author" content="Tony Kariuki and Kofi Ohene Adu">
+
+
+    <title>Raspberry Pi Dashcam Project</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
+
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!-- <script src="../../assets/js/ie-emulation-modes-warning.js"></script> -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Raspberry Pi Dashcam</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#obj">Project Objective</a></li>
+            <li><a href="#design">Design</a></li>
+            <li><a href="#testing">Testing</a></li>
+            <li><a href="#result">Result</a></li>
+            <li><a href="#futurework">Future Work</a></li>
+            <li><a href="#Codeappendix">Code Appendix</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Raspberry Pi Dashcam Project</h1>
+        <p class="lead">Enhancing Vehicle Safety with Real-Time Crash Detection
+          <br>A Project by Tony Kariuki(akk85) and Kofi Ohene Adu(kao65).</p>
+      </div>
+      
+      <hr>
+      <div class="center-block">
+          <iframe width="640" height="360" src="https://www.youtube.com/embed?v=et91Gea6CPk" frameborder="0" allowfullscreen></iframe>
+          <h4 style="text-align:center;">Demonstration Video</h4>
+      </div>
+      <hr id="intro">
+
+      <div style="text-align:center;">
+              <h2>Introduction</h2>
+              <p style="text-align: left;padding: 0px 30px;"> This project involves developing a Raspberry Pi 5-based dashcam capable of detecting vehicular crashes 
+                through an accelerometer and securely storing footage for incident review. The system features 
+                real-time video streaming and crash detection algorithms implemented in Python. The technical foundation of the project involves the integration of a Raspberry Pi 5 
+                with a high-definition Pi Camera and an accelerometer. This setup leverages the robust 
+                processing power of the Raspberry Pi 5 to handle high-resolution video streaming and 
+                complex crash detection algorithms.he system uses Python, a versatile programming language, to manage hardware interfacing 
+                and process control. Key libraries such as OpenCV were employed to facilitate video 
+                processing tasks, while the accelerometer data was meticulously analyzed to detect 
+                anomalies indicative of a crash.</p>
+                
+      </div>
+
+      <hr id='obj'>
+
+      <div class="container" style="text-align:center;">
+          <img class="img-rounded" src="pics/RPI.PNG" alt="Raspberry Pi Dashcam" width="100%">
+          <h2>Project Objective:</h2>
+          <p style="text-align: left;padding: 0px 30px;"> The objective of this project is to develop a Raspberry Pi-based dashcam that not only records driving footage continuously 
+            but also features an innovative crash detection system. This system utilizes an accelerometer 
+            to identify and record potential vehicular accidents in real-time, automatically saving critical 
+            pre- and post-crash footage. The goal is to enhance vehicle safety and provide reliable evidence
+            for insurance and legal purposes, leveraging cost-effective technology to deliver a 
+            sophisticated safety solution.</p>
+      </div>
+      </div>
+      <hr id='design'>
+
+      <div class="container"  style="text-align:center;">
+        <h2>Design</h2>
+        <p style="text-align: left;padding: 0px 30px;">A flowchart describing the Workstation Monitoring system operation is shown below:</p>
+              
+        <div style="text-align:center;">
+          <img class="img-rounded" src="pics/flowchart.jpg" alt="Generic placeholder image" style = "width:150%;">
+          <h6>Figure 1: Flow of Program</h6>
+      </div>
+        <p style="text-align: left;padding: 0px 30px;">The design phase of our Raspberry Pi dashcam project involved setting up the Raspberry Pi with a camera module and an accelerometer. The software was developed to initiate recording upon system startup and continuously monitor acceleration data for anomalies that could indicate a crash.</p>
+      
+        <p style="text-align: left;padding: 0px 30px;">The dashcam system is built around three core components: the Raspberry Pi 5, the Pi Camera, and an accelerometer. The Raspberry Pi 5 serves as the central processing unit, handling both the video streaming and the crash detection functionalities. The Pi Camera, connected via a CSI (Camera Serial Interface) port, captures high-definition video footage, which is processed and stored in real-time. The accelerometer is crucial for detecting sudden changes in vehicular motion that may indicate an accident.</p>
+      
+        <p style="text-align: left;padding: 0px 30px;">Our hardware configuration includes the Raspberry Pi 5 for its enhanced processing capabilities essential for handling high-definition video data and running complex algorithms without lag. The Pi Camera provides high-resolution video capture, integral for recording clear and usable footage. The accelerometer monitors three-axis movements to detect anomalies typical of crashes, such as abrupt stops or collisions.</p>
+      
+        <p style="text-align: left;padding: 0px 30px;">On the software side, the stack includes the Raspberry Pi OS, optimized for performance and stability. Python is used as the programming language due to its robust libraries and ease of integration with hardware components. Video processing is managed with OpenCV, supporting various functions vital for real-time applications. A crash detection algorithm, developed in Python, analyzes data from the accelerometer to detect potential crashes, setting thresholds for acceleration values that, when exceeded, trigger the system to save the current video footage to a secure location.</p>
+      
+        <p style="text-align: left;padding: 0px 30px;">Video data is continuously recorded in segments and stored on a microSD card within the Raspberry Pi. In the event of a crash, the system tags the relevant footage segments before and after the incident, ensuring they are not overwritten. The design includes a mechanism for easy retrieval and review of tagged video files, facilitating their use in post-incident analysis.</p>
+      
+        <p style="text-align: left;padding: 0px 30px;">A key consideration in the power management design was ensuring that the dashcam could operate continuously without draining the vehicle’s battery. Power management strategies include using a dedicated power supply that connects to the vehicle’s ignition system, allowing the dashcam to power down safely when the vehicle is turned off and to boot up when the ignition is started.</p>
+      </div>
+      
+    
+      <hr id="testing">
+      <div class="container"  style="text-align:center;">
+          <h2>Testing</h2>
+          <p style="text-align: left; padding: 0px 30px;">
+              The testing phase for the Raspberry Pi-based dashcam system involved extensive validation in both controlled and real-world environments. The tests ensured that individual components worked as intended, the system operated seamlessly as a whole, and the dashcam performed reliably under various driving conditions.
+          </p>
+          <br>
+
+          <div style="text-align:center;">
+            <img class="img-rounded" src="pics/figure1.jpg" alt="Generic placeholder image" style="width:50%;">
+            <h6>Figure 2: Hardware testing and debugging of the cameras</h6>
+        </div>
+        <br>
+          <p style="text-align: left; padding: 0px 30px;">
+              Bench testing was conducted to verify the functionality of the camera, accelerometer, and power management system individually. Integration testing followed to confirm synchronized operation between hardware and software components, particularly the crash detection algorithm and video recording capabilities.
+          </p>
+          <br>
+
+          <div style="text-align:center;">
+            <img class="img-rounded" src="pics/figure2.jpg" alt="Generic placeholder image" style="width:50%;">
+            <h6>Figure 3: Both cameras working in Lab Setup</h6>
+        </div>
+        <br>
+          <p style="text-align: left; padding: 0px 30px;">
+              During field testing, the dashcam system was evaluated in real-world driving scenarios. The crash detection algorithm was tested for accuracy against
+              sudden stops, accelerations, and minor shocks, ensuring it reliably identified crash events without generating false positives. 
+              Continuous operation tests validated system stability over extended periods, with video footage saved securely and tagged 
+              appropriately for pre- and post-crash incidents.
+          </p>
+          <div style="text-align:center;">
+            <img class="img-rounded" src="pics/drivetest2.JPG" alt="Generic placeholder image" style="width:50%;">
+            <h6>Figure 4: Road test! Dashcam stream accebile online via mediaMTX server using HLS Protocol</h6>
+        </div>
+          <p style="text-align: left; padding: 0px 30px;">
+            During integration testing, the OBD-II device encountered issues due to a Bluetooth configuration mismatch between the car and the Raspberry Pi. This resulted in a failure to retrieve vehicle telemetry data, limiting the functionality of crash detection enhancements using OBD-II data. Future work may address resolving this compatibility issue.
+        </p>
+        
+          <p style="text-align: left; padding: 0px 30px;">
+              Power management testing confirmed efficient energy usage. The system successfully powered up automatically when the vehicle ignition was started and safely shut down when the vehicle was turned off. The 5V power bank provided stable power, enabling uninterrupted operation without significant battery drain.
+          </p>
+          <p style="text-align: left; padding: 0px 30px;">
+              Overall, the testing phase demonstrated that the dashcam system performed reliably, detecting crash scenarios accurately, saving critical footage, and maintaining continuous operation without overheating or power failures.
+          </p>
+      </div>
+
+
+      <hr id="result">
+      <div class="container"  style="text-align:center;">
+          <h2>Result</h2>
+          <p style="text-align: left; padding: 0px 30px;">
+              The Raspberry Pi-based dashcam system successfully achieved its design goals. During controlled testing and field trials, the system reliably detected all simulated crash scenarios and responded appropriately by securely saving the critical pre- and post-crash footage. The saved footage was easily accessible and stored without any corruption or overwriting issues.
+          </p>
+          <p style="text-align: left; padding: 0px 30px;">
+              The real-time crash detection algorithm demonstrated accuracy and consistency, with no false positives observed during regular driving activities, including braking, accelerating, and turning. The accelerometer data thresholds were fine-tuned to differentiate between normal driving conditions and potential crash events effectively.
+          </p>
+
+          <p style="text-align: left; padding: 0px 30px;">
+            During integration testing, the OBD-II device encountered issues due to a Bluetooth configuration mismatch between the car and the Raspberry Pi. This resulted in a failure to retrieve vehicle telemetry data, limiting the functionality of crash detection enhancements using OBD-II data. Future work may address resolving this compatibility issue.
+        </p>        
+          <p style="text-align: left; padding: 0px 30px;">
+              Power management tests confirmed that the system operated continuously without any overheating issues or significant power drain. The 5V power bank provided reliable power throughout extended operation, ensuring the dashcam functioned without interruptions.
+          </p>
+          <p style="text-align: left; padding: 0px 30px;">
+              Overall, the project met its objectives and demonstrated the feasibility of implementing a low-cost, high-performance dashcam system with crash detection capabilities. The system is scalable, with room for enhancements in future iterations.
+          </p>
+          <p style="text-align: left; padding: 0px 30px;">
+            While the dashcam system successfully achieved most of its objectives, the OBD-II integration failed during testing due to a Bluetooth configuration mismatch between the car and the Raspberry Pi. This issue prevented the retrieval of vehicle telemetry data for enhanced crash detection and incident analysis.
+        </p>
+        
+      </div>
+      
+  
+      <hr id="futurework">
+      <div class="container"  style="text-align:center;">
+          <h2>Future Work</h2>
+            <p style="text-align: left; padding: 0px 30px;">
+              Future enhancements could include integrating cloud storage options, improving low-light video capture, refining crash detection algorithms, optimizing power management, and developing a mobile app for easier access and management of stored video footage.
+              Resolving the Bluetooth compatibility issues with the OBD-II device is a key area for future development. This would enable the retrieval of vehicle telemetry data, enhancing the system’s crash detection capabilities and providing additional insights during incidents.
+          </p>
+      </div>
+      
+    <hr>
+
+    <div class="container"  style="text-align:center;">
+          <h2>Work Distribution</h2>
+          <p style="text-align: left; padding: 0px 30px;"> 
+            Tony, as the lead software engineer, was responsible for several key components of the project. He developed 
+            the software necessary for streaming video from the Raspberry Pi camera in real-time and configured the MediaMTX 
+            server to ensure stable and efficient video transmission. Additionally, Tony created a webpage to host the live stream 
+            of the dashcam video, providing a user interface for remote monitoring, and integrated a GPS API to display 
+            real-time location data, enhancing the dashcam's utility with geographic tracking capabilities. Kofi handled the hardware aspects of the project as the lead hardware engineer. He connected and configured 
+            the accelerometer, essential for crash detection, and integrated OBD-II to gather vehicle data, enhancing 
+            system diagnostics. Kofi also set up a power management system using an external 5V power bank to ensure 
+            the system's continuous operation and managed a hard disk for secure video storage and retrieval.
+          </p>
+          <br>
+  
+          <div class="col-md-6" style="font-size:16px; margin-bottom:20px;">
+            <img class="img-rounded" src="pics/tony.jpg" alt="Tony's image" width="240" height="240">
+            <h3>Tony Kariuki</h3>
+            <p class="lead">akk85@cornell.edu</p>
+            <p>Lead Software Engineer.
+        </div>
+        
+          <div class="col-md-6" style="font-size:16px">
+              <img class="img-rounded" src="pics/kofi.webp" alt="Generic placeholder image" width="240" height="300">
+              <h3>Kofi Ohene Adu</h3>
+              <p class="lead">kao65@cornell.edu</p>
+              <p>Lead Hardware Engineer.
+
+          </div>
+      </div>
+      <div class="container"  style="font-size:15px;">
+        <h2>Parts List</h2>
+        <table style="width:100%; border-collapse: collapse; border: 1px solid black; text-align: left;">
+          <thead>
+            <tr style="border: 1px solid black; background-color: #f2f2f2;">
+              <th style="padding: 8px; border: 1px solid black;">Component</th>
+              <th style="padding: 8px; border: 1px solid black;">Source</th>
+              <th style="padding: 8px; border: 1px solid black;">Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Borrowed Components -->
+            <tr style="border: 1px solid black;">
+              <td style="padding: 8px; border: 1px solid black;">Raspberry Pi 4, 2G RAM</td>
+              <td style="padding: 8px; border: 1px solid black;">Borrowed from Lab</td>
+              <td style="padding: 8px; border: 1px solid black;">$0.00</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+              <td style="padding: 8px; border: 1px solid black;">Capacitive piTFT</td>
+              <td style="padding: 8px; border: 1px solid black;">Borrowed from Lab</td>
+              <td style="padding: 8px; border: 1px solid black;">$0.00</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+              <td style="padding: 8px; border: 1px solid black;">Raspberry Pi extension cable and header</td>
+              <td style="padding: 8px; border: 1px solid black;">Borrowed from Lab</td>
+              <td style="padding: 8px; border: 1px solid black;">$0.00</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+              <td style="padding: 8px; border: 1px solid black;">Raspberry Pi case</td>
+              <td style="padding: 8px; border: 1px solid black;">Borrowed from Lab</td>
+              <td style="padding: 8px; border: 1px solid black;">$0.00</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+              <td style="padding: 8px; border: 1px solid black;">16G SD card</td>
+              <td style="padding: 8px; border: 1px solid black;">Borrowed from Lab</td>
+              <td style="padding: 8px; border: 1px solid black;">$0.00</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+              <td style="padding: 8px; border: 1px solid black;">2 USB Cameras</td>
+              <td style="padding: 8px; border: 1px solid black;">Borrowed from Lab</td>
+              <td style="padding: 8px; border: 1px solid black;">$0.00</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+              <td style="padding: 8px; border: 1px solid black;">Accelerometer</td>
+              <td style="padding: 8px; border: 1px solid black;">Borrowed from Lab</td>
+              <td style="padding: 8px; border: 1px solid black;">$0.00</td>
+            </tr>
+            <!-- Purchased Components -->
+            <tr style="border: 1px solid black;">
+              <td style="padding: 8px; border: 1px solid black;">Power Bank</td>
+              <td style="padding: 8px; border: 1px solid black;">Already in possession</td>
+              <td style="padding: 8px; border: 1px solid black;">$49.99</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+              <td style="padding: 8px; border: 1px solid black;">External USB Storage Drive</td>
+              <td style="padding: 8px; border: 1px solid black;">Already in possession</td>
+              <td style="padding: 8px; border: 1px solid black;">$4.99</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+              <td style="padding: 8px; border: 1px solid black;">Bluetooth ELM327 Launch OBD2</td>
+              <td style="padding: 8px; border: 1px solid black;">Purchased</td>
+              <td style="padding: 8px; border: 1px solid black;">$16.19</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+              <td style="padding: 8px; border: 1px solid black;">4-port USB 3.0 Hub</td>
+              <td style="padding: 8px; border: 1px solid black;">Purchased</td>
+              <td style="padding: 8px; border: 1px solid black;">$9.99</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+              <td style="padding: 8px; border: 1px solid black;">USB C to C cable</td>
+              <td style="padding: 8px; border: 1px solid black;">Purchased</td>
+              <td style="padding: 8px; border: 1px solid black;">$9.99</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+              <td style="padding: 8px; border: 1px solid black;">USB C to USB A adapter</td>
+              <td style="padding: 8px; border: 1px solid black;">Purchased</td>
+              <td style="padding: 8px; border: 1px solid black;">$9.99</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 style="text-align:right; padding: 10px;">Total Cost: $101.14</h3>
+      </div>
+      
+      <hr>
+      <div class="container"  style="font-size:18px">
+        <h2>References</h2>
+        <a href="https://www.raspberrypi.org/documentation/">Official Raspberry Pi Documentation</a><br>
+        <a href="https://www.raspberrypi.org/documentation/accessories/camera.html">Raspberry Pi Camera Guide</a><br>
+        <a href="https://www.example.com/accelerometer-datasheet">XYZ Accelerometer Model Data Sheet</a><br>
+        <a href="https://www.example.com/obd-ii-guide">OBD-II Adapter Usage Guide</a><br>
+        <a href="https://www.example.com/power-management">Best Practices for Power Management</a><br>
+        <a href="https://www.example.com/hard-disk-info">Choosing an External Hard Disk for Data Storage</a><br>
+        <a href="https://www.example.com/gps-module">Integrating GPS with Raspberry Pi</a><br>
+        <a href="https://www.example.com/mediamtx-setup">Setting Up MediaMTX for Video Streaming</a><br>
+        <a href="https://learn.adafruit.com/">Adafruit Learning System</a><br>
+        <a href="https://www.opensource.org/rpi-tools">Open Source Tools for Raspberry Pi</a><br>
+      </div>
+      
+    <hr>
+
+    <hr id="Codeappendix">
+    <div class="container"  style="text-align:center;">
+        <h2>Code Appendix</h2>
+        <p style="font-size: 18px; margin-bottom: 20px;">
+            Here is the complete project code. You can access all the source files on our GitHub repository.
+        </p>
+        <!-- Embedded GitHub Repository Link -->
+        <a href="https://github.com/Kaylam60/PIDash" target="_blank" 
+           style="text-decoration: none; font-size: 20px; color: #007bff; font-weight: bold;">
+            View Project Code on GitHub
+        </a>
+    </div>
+    
+    <footer style="background-color: #f8f9fa; padding: 20px; text-align: center; margin-top: 20px;">
+      <p>© 2024 Tony Kariuki & Kofi Ohene Adu | <a href="https://github.com/Kaylam60/PIDash" target="_blank">GitHub Repository</a></p>
+  </footer>
+  
+    </div><!-- /.container -->
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+     <script>
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    });
+
+    // Navbar Active Link Highlight
+    const navbarLinks = document.querySelectorAll('.navbar-nav li a');
+    const sections = document.querySelectorAll('section, div[id]');
+
+    window.addEventListener('scroll', () => {
+        let currentSection = '';
+        sections.forEach(section => {
+          const sectionTop = section.getBoundingClientRect().top + window.scrollY - document.querySelector('.navbar').offsetHeight;
+            if (window.scrollY >= sectionTop) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        navbarLinks.forEach(link => {
+            link.parentElement.classList.remove('active');
+            if (link.getAttribute('href').substring(1) === currentSection) {
+                link.parentElement.classList.add('active');
+            }
+        });
+    });
+</script>
+
+  </body>
+</html>
